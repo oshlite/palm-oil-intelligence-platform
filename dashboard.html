@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard WIT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:auto;
+    background:#f5f5f5;
+    font-family:'Poppins',sans-serif;
+}
+
+/* Container utama */
+.dashboard-container{
+    width:1024px;
+    margin:0 auto;
+    background:#fff;
+}
+
+/* Dashboard */
+.dashboard-content{
+    width:1024px;
+    margin:0;
+    padding:0;
+}
+
+/* Wrapper scroll */
+.tableau-scroll{
+    width:1024px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    margin:0;
+    padding:0;
+}
+
+/* Tinggi viewport masing-masing */
+#wit1-wrapper{
+    height:1120px;
+}
+
+#wit2-wrapper{
+    height:1540px;
+}
+
+#wit3-wrapper{
+    height:550px;
+}
+
+/* Tableau */
+.tableau-viz,
+.tableauPlaceholder{
+    width:1024px !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.tableauViz{
+    display:block !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+<div class="dashboard-content">
+
+    <!-- WIT 1 -->
+    <div id="wit1-wrapper" class="tableau-scroll">
+        <div class="tableau-viz tableauPlaceholder" id="viz1781358911124" style="position:relative">
+            <noscript>
+                <a href="#">
+                    <img alt="wit1"
+                    src="https://public.tableau.com/static/images/wi/wit1/wit1/1_rss.png"
+                    style="border:none">
+                </a>
+            </noscript>
+
+            <object class="tableauViz" style="display:none;">
+                <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+                <param name="embed_code_version" value="3"/>
+                <param name="site_root" value=""/>
+                <param name="name" value="wit1/wit1"/>
+                <param name="tabs" value="no"/>
+                <param name="toolbar" value="yes"/>
+                <param name="static_image" value="https://public.tableau.com/static/images/wi/wit1/wit1/1.png"/>
+                <param name="animate_transition" value="yes"/>
+                <param name="display_static_image" value="yes"/>
+                <param name="display_spinner" value="yes"/>
+                <param name="display_overlay" value="yes"/>
+                <param name="display_count" value="yes"/>
+                <param name="language" value="en-US"/>
+            </object>
+        </div>
+    </div>
+
+    <!-- WIT 2 -->
+    <div id="wit2-wrapper" class="tableau-scroll">
+        <div class="tableau-viz tableauPlaceholder" id="viz1781358919518" style="position:relative">
+            <noscript>
+                <a href="#">
+                    <img alt="wit2"
+                    src="https://public.tableau.com/static/images/wi/wit2_17813526408940/wit2/1_rss.png"
+                    style="border:none">
+                </a>
+            </noscript>
+
+            <object class="tableauViz" style="display:none;">
+                <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+                <param name="embed_code_version" value="3"/>
+                <param name="site_root" value=""/>
+                <param name="name" value="wit2_17813526408940/wit2"/>
+                <param name="tabs" value="no"/>
+                <param name="toolbar" value="yes"/>
+                <param name="static_image" value="https://public.tableau.com/static/images/wi/wit2_17813526408940/wit2/1.png"/>
+                <param name="animate_transition" value="yes"/>
+                <param name="display_static_image" value="yes"/>
+                <param name="display_spinner" value="yes"/>
+                <param name="display_overlay" value="yes"/>
+                <param name="display_count" value="yes"/>
+                <param name="language" value="en-US"/>
+            </object>
+        </div>
+    </div>
+
+    <!-- WIT 3 -->
+    <div id="wit3-wrapper" class="tableau-scroll">
+        <div class="tableau-viz tableauPlaceholder" id="viz1781358927727" style="position:relative">
+            <noscript>
+                <a href="#">
+                    <img alt="wit3"
+                    src="https://public.tableau.com/static/images/wi/wit3/wit3/1_rss.png"
+                    style="border:none">
+                </a>
+            </noscript>
+
+            <object class="tableauViz" style="display:none;">
+                <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F"/>
+                <param name="embed_code_version" value="3"/>
+                <param name="site_root" value=""/>
+                <param name="name" value="wit3/wit3"/>
+                <param name="tabs" value="no"/>
+                <param name="toolbar" value="yes"/>
+                <param name="static_image" value="https://public.tableau.com/static/images/wi/wit3/wit3/1.png"/>
+                <param name="animate_transition" value="yes"/>
+                <param name="display_static_image" value="yes"/>
+                <param name="display_spinner" value="yes"/>
+                <param name="display_overlay" value="yes"/>
+                <param name="display_count" value="yes"/>
+                <param name="language" value="en-US"/>
+            </object>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script src="https://public.tableau.com/javascripts/api/viz_v1.js"></script>
+
+<script>
+function setupTableauViz(vizId, height){
+
+    const divElement =
+        document.getElementById(vizId);
+
+    const vizElement =
+        divElement.getElementsByTagName('object')[0];
+
+    vizElement.style.width = "1024px";
+    vizElement.style.height = height + "px";
+    vizElement.style.display = "block";
+    vizElement.style.margin = "0";
+    vizElement.style.padding = "0";
+}
+
+setupTableauViz(
+    "viz1781358911124",
+    4027
+);
+
+setupTableauViz(
+    "viz1781358919518",
+    3027
+);
+
+setupTableauViz(
+    "viz1781358927727",
+    535
+);
+</script>
+</body>
+</html>
