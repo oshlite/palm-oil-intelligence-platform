@@ -167,7 +167,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
   /* ── GRID ── */
   .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap: 20px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; }
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+.drivers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
   .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
 
   /* ── PAGE HEADER ── */
@@ -348,8 +368,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <div class="nav-links">
       <button class="nav-link active" onclick="showPage('home')">Home</button>
       <button class="nav-link" onclick="showPage('prediction')">Prediction</button>
-      <button class="nav-link" onclick="showPage('insights')">Insights</button>
-      <button class="nav-link" onclick="showPage('dashboard')">Dashboard</button>
+      <button class="nav-link" onclick="showPage('insights')">Insights [BI]</button>
+      <button class="nav-link" onclick="showPage('dashboard')">Dashboard [DA]</button>
       <button class="nav-link" onclick="showPage('about')">About</button>
     </div>
   </div>
@@ -364,7 +384,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       <div class="hero-badge">Malaysia CPO Intelligence</div>
       <h1>Predict <span>Palm Oil</span>  Production</h1>
       <p class="hero-sub">
-        An end-to-end data science platform untuk memprediksi produksi Crude Palm Oil (CPO) Malaysia dengan model Random Forest, XGBoost, dan Linear Regression yang dilatih dengan data industri lebih dari 30 tahun.
+        End-to-end data science platform untuk memprediksi produksi Crude Palm Oil (CPO) Malaysia dengan model Random Forest, XGBoost, dan Linear Regression yang dilatih dengan data industri lebih dari 30 tahun.
       </p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('prediction')">Run a Prediction</button>
@@ -397,7 +417,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <h2 class="sec-title">From raw data to production forecasts</h2>
     <p class="sec-sub">Dirancang untuk producer, policy maker, researcher, NGO, dan industry stakeholders yang membutuhkan insight supply chain yang lebih akurat dan data-driven.</p>
 
-    <div class="grid-3">
+<div class="drivers-grid">
       <div class="card">
         <div style="font-size:28px;margin-bottom:12px;color:var(--green-500);">
     <i class="fas fa-chart-line"></i>
@@ -592,33 +612,33 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <div id="page-insights" class="page">
   <div class="page-header">
     <div class="page-header-inner">
-      <div class="page-tag">Analysis</div>
+      <div class="page-tag">Business Intelligence</div>
       <h2>Insights & Recommendations</h2>
-      <p>Strategic analysis of Malaysia's palm oil sector — key drivers, risks, and opportunities</p>
+      <p>Analisis strategis sektor kelapa sawit Malaysia yang menyoroti faktor pendorong utama, risiko, serta peluang pengembangan industri.</p>
     </div>
   </div>
 
   <div class="section">
     <div class="tab-bar">
-      <div class="tab active" onclick="switchTab(this,'tab-trends')">Production Trends</div>
+      <div class="tab active" onclick="switchTab(this,'tab-trends')">Tren Produksi</div>
       <div class="tab" onclick="switchTab(this,'tab-drivers')">Key Drivers</div>
-      <div class="tab" onclick="switchTab(this,'tab-recs')">Recommendations</div>
-      <div class="tab" onclick="switchTab(this,'tab-ai')">AI Analysis</div>
+      <div class="tab" onclick="switchTab(this,'tab-recs')">Rekomendasi</div>
+      <div class="tab" onclick="switchTab(this,'tab-ai')">Nyawit AI</div>
     </div>
 
     <!-- TRENDS TAB -->
     <div id="tab-trends" class="tab-content">
       <div class="grid-2">
         <div class="card">
-          <div class="card-title">CPO production vs matured area</div>
-          <div class="card-desc">Strong positive correlation — area expansion is the primary growth driver</div>
+          <div class="card-title">Produksi Minyak Sawit (CPO) vs Luas Areal Menghasilkan</div>
+          <div class="card-desc">Terdapat korelasi positif yang kuat, perluasan areal menghasilkan menjadi faktor utama peningkatan produksi CPO.</div>
           <div class="chart-wrap" style="height:260px">
             <canvas id="trendChart1" role="img" aria-label="Line chart of CPO production and matured area over time">CPO production and matured area trends.</canvas>
           </div>
         </div>
         <div class="card">
-          <div class="card-title">Export vs domestic consumption split</div>
-          <div class="card-desc">Malaysia exports roughly 75–80% of total production</div>
+          <div class="card-title">Proporsi Ekspor vs Konsumsi Domestik</div>
+          <div class="card-desc">Malaysia mengekspor sekitar 75–80% dari total produksi</div>
           <div class="chart-wrap" style="height:260px">
             <canvas id="trendChart2" role="img" aria-label="Stacked bar chart of export versus domestic consumption">Export and domestic consumption split.</canvas>
           </div>
@@ -626,10 +646,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       </div>
 
       <div class="card" style="margin-top:20px">
-        <div class="card-title">Yield productivity trend (tonnes/ha)</div>
-        <div class="card-desc">After peaking ~2011, yield has shown a slight declining trend — a key concern for the sector</div>
+        <div class="card-title">Tren Produktivitas (ton/ha)</div>
+        <div class="card-desc">Setelah mencapai puncak sekitar 2011, yield telah menunjukkan tren penurunan yang ringan sebuah kekhawatiran utama bagi sektor ini</div>
         <div class="chart-wrap" style="height:220px">
-          <canvas id="trendChart3" role="img" aria-label="Line chart of palm oil yield per hectare over time">Yield productivity trend.</canvas>
+          <canvas id="trendChart3" role="img" aria-label="Line chart of palm oil yield per hectare over time">Tren produktivitas.</canvas>
         </div>
       </div>
     </div>
@@ -641,13 +661,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <div class="insight-header">
             <div class="insight-icon" style="background:#dcfce7">🌱</div>
             <div>
-              <div class="insight-title">Matured area</div>
+              <div class="insight-title">Luas Areal Menghasilkan</div>
               <div class="insight-meta">Importance score: 0.62</div>
             </div>
             <div style="margin-left:auto"><span class="badge badge-high">Top driver</span></div>
           </div>
           <div class="insight-body">
-            <p class="insight-text">Matured area is the single most important predictor of CPO production. Every 1,000 ha increase in matured plantation correlates with ~3,500 t increase in annual production. Malaysia's estate expansion from 1.6M ha (1990) to 5.9M ha (2020) explains most of the 6× growth in production.</p>
+            <p class="insight-text">Luas areal menghasilkan adalah prediktor paling penting dari produksi CPO. Setiap peningkatan 1,000 ha dalam perkebunan yang matang berkorelasi dengan peningkatan sekitar 3,500 t dalam produksi tahunan. Perluasan perkebunan di Malaysia dari 1.6M ha (1990) menjadi 5.9M ha (2020) menjelaskan sebagian besar pertumbuhan 6× dalam produksi.</p>
           </div>
         </div>
 
@@ -655,13 +675,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <div class="insight-header">
             <div class="insight-icon" style="background:#fef9c3">⚡</div>
             <div>
-              <div class="insight-title">Palm oil yield</div>
+              <div class="insight-title">Produktivitas Minyak Sawit</div>
               <div class="insight-meta">Importance score: 0.24</div>
             </div>
             <div style="margin-left:auto"><span class="badge badge-medium">Key factor</span></div>
           </div>
           <div class="insight-body">
-            <p class="insight-text">Yield (t/ha) is the second most influential feature. Productivity improvements from better genetics and agronomy drove growth in the 2000s. Recent stagnation at 3.5–3.9 t/ha signals the need for intensification — mature palms >25 years old are a drag on national averages.</p>
+            <p class="insight-text">Produktivitas (ton/ha) merupakan faktor kedua yang paling berpengaruh. Peningkatan hasil melalui varietas unggul dan perbaikan budidaya menjadi pendorong utama pertumbuhan pada era 2000-an. Namun, produktivitas yang stagnan di kisaran 3,5–3,9 ton/ha dalam beberapa tahun terakhir menunjukkan perlunya intensifikasi produksi. Tingginya proporsi tanaman berumur lebih dari 25 tahun.</p>
           </div>
         </div>
 
@@ -669,13 +689,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <div class="insight-header">
             <div class="insight-icon" style="background:#ede9fe">🏭</div>
             <div>
-              <div class="insight-title">Domestic consumption</div>
+              <div class="insight-title">Konsumsi Domestik</div>
               <div class="insight-meta">Importance score: 0.09</div>
             </div>
             <div style="margin-left:auto"><span class="badge badge-low">Moderate</span></div>
           </div>
           <div class="insight-body">
-            <p class="insight-text">Internal demand — including food, oleochemicals, and biodiesel (B10/B20 mandates) — provides a price floor for producers. Biodiesel mandates have been the key growth engine for domestic demand since 2015, absorbing 15–20% of total production.</p>
+            <p class="insight-text">Konsumsi domestik termasuk makanan, oleochemicals, dan biodiesel (mandat B10/B20) menyediakan floor harga bagi produsen. Mandat biodiesel telah menjadi mesin pertumbuhan utama untuk permintaan domestik sejak 2015, menyerap 15–20% dari total produksi.</p>
           </div>
         </div>
 
@@ -683,13 +703,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <div class="insight-header">
             <div class="insight-icon" style="background:#fce7f3">🚢</div>
             <div>
-              <div class="insight-title">CPO & processed exports</div>
+              <div class="insight-title">Ekspor Minyak Sawit (CPO) & Produksi Olahan</div>
               <div class="insight-meta">Importance score: 0.05</div>
             </div>
             <div style="margin-left:auto"><span class="badge badge-low">Supporting</span></div>
           </div>
           <div class="insight-body">
-            <p class="insight-text">Export volume is more a downstream result than a production driver. However, export incentives and refining capacity affect which form (crude vs. processed) is exported and thus CPO producer margins. India and China together absorb ~45% of Malaysia's exports.</p>
+            <p class="insight-text">Volume ekspor lebih merupakan hasil dari rantai pasokan daripada penggerak produksi. Namun, insentif ekspor dan kapasitas pengolahan memengaruhi bentuk (mentah vs. diproses) yang diekspor dan dengan demikian margin produsen CPO. India dan China bersama-sama menyerap sekitar 45% dari ekspor Malaysia.</p>
           </div>
         </div>
 
@@ -697,13 +717,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <div class="insight-header">
             <div class="insight-icon" style="background:#e0f2fe">☁️</div>
             <div>
-              <div class="insight-title">Weather & El Niño</div>
-              <div class="insight-meta">External factor (not modeled)</div>
+              <div class="insight-title">Cuaca & El Niño</div>
+              <div class="insight-meta">Faktor Risiko Eksternal</div>
             </div>
-            <div style="margin-left:auto"><span class="badge badge-medium">Risk factor</span></div>
+            <div style="margin-left:auto"><span class="badge badge-medium">Risiko Tinggi</span></div>
           </div>
           <div class="insight-body">
-            <p class="insight-text">El Niño-driven drought events (1997–98, 2015–16) caused production to drop 5–12% below model predictions. This exogenous shock is the model's largest source of error. Climate risk is growing with more frequent extreme weather events.</p>
+            <p class="insight-text">Peristiwa kekeringan yang dipicu oleh El Niño, seperti pada periode 1997–1998 dan 2015–2016, menyebabkan produksi turun sekitar 5–12% di bawah prediksi model. Guncangan eksternal ini menjadi salah satu sumber kesalahan prediksi terbesar. Risiko iklim diperkirakan akan semakin meningkat seiring bertambahnya frekuensi cuaca ekstrem akibat perubahan iklim.</p>
           </div>
         </div>
 
@@ -711,13 +731,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <div class="insight-header">
             <div class="insight-icon" style="background:#fff7ed">👷</div>
             <div>
-              <div class="insight-title">Labour availability</div>
-              <div class="insight-meta">External factor (not modeled)</div>
+              <div class="insight-title">Ketersediaan Tenaga Kerja</div>
+              <div class="insight-meta">Faktor Eksternal</div>
             </div>
-            <div style="margin-left:auto"><span class="badge badge-medium">Risk factor</span></div>
+            <div style="margin-left:auto"><span class="badge badge-medium">Faktor Risiko</span></div>
           </div>
           <div class="insight-body">
-            <p class="insight-text">Malaysia's palm oil sector depends heavily on migrant labour (60–70% of harvest workers). Immigration policy shocks — such as COVID-19 border closures in 2020–21 — led to significant unharvested crop losses that the area/yield model cannot capture.</p>
+            <p class="insight-text">Industri kelapa sawit Malaysia sangat bergantung pada tenaga kerja migran yang mencakup sekitar 60–70% pekerja panen. Gangguan kebijakan imigrasi, seperti pembatasan perbatasan selama pandemi COVID-19 pada 2020–2021, menyebabkan sebagian hasil panen tidak dapat dipanen secara optimal. Dampak ini tidak dapat sepenuhnya ditangkap oleh model yang hanya mempertimbangkan luas areal dan produktivitas.</p>
           </div>
         </div>
       </div>
@@ -727,19 +747,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <div id="tab-recs" class="tab-content" style="display:none">
       <div class="grid-2">
         <div>
-          <h3 class="sec-title" style="font-size:16px;margin-bottom:16px">For Industry / Producers</h3>
+          <h3 class="sec-title" style="font-size:16px;margin-bottom:16px">For Industry</h3>
           <div style="display:flex;flex-direction:column;gap:12px">
-            <div class="card" style="padding:16px;border-left:4px solid var(--green-500)">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">🔬 Yield intensification program</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">Prioritise replanting of palms >25 years with improved tenera varieties (DxP seeds). Target a yield improvement from 3.7 → 4.2 t/ha by 2030 — this alone could add 2–3 million tonnes of production without expanding land bank.</p>
+            <div class="card" style="padding:16px;border-left:4px solid #df49c6">
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px"><i class="fas fa-flask" style="color:#df49c6"></i> Program Intensifikasi Produktivitas </div> <p style="font-size:13px;color:var(--text-secondary);line-height:1.6"> Prioritaskan peremajaan tanaman sawit berusia di atas 25 tahun menggunakan varietas unggul (benih DxP). Peningkatan produktivitas dari 3,7 menjadi 4,2 ton/ha pada 2030 berpotensi menambah 2–3 juta ton produksi tanpa perlu memperluas lahan. </p>
             </div>
             <div class="card" style="padding:16px;border-left:4px solid var(--green-500)">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">🤖 Precision agriculture adoption</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">Deploy drone-based FFB ripeness detection and variable-rate fertilizer application. Estates that have piloted these technologies report 8–15% yield improvement and 20% reduction in fertilizer costs.</p>
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px"><i class="fas fa-leaf" style="color:#10b981"></i> Penerapan Pertanian Presisi </div> <p style="font-size:13px;color:var(--text-secondary);line-height:1.6"> Manfaatkan drone untuk mendeteksi tingkat kematangan tandan buah segar (TBS) dan menerapkan pemupukan sesuai kebutuhan lahan. Implementasi teknologi ini terbukti mampu meningkatkan produktivitas sekaligus menekan biaya pupuk. </p>
             </div>
             <div class="card" style="padding:16px;border-left:4px solid var(--amber-500)">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">👥 Labour diversification</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">Reduce dependency on migrant harvest labour through mechanical harvesters (MPOB's motorised cutter) and automated fresh fruit bunch collection systems. Target 30% mechanisation by 2028.</p>
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px"><i class="fas fa-users" style="color:#f59e0b"></i> Diversifikasi Tenaga Kerja </div> <p style="font-size:13px;color:var(--text-secondary);line-height:1.6"> Kurangi ketergantungan pada tenaga panen manual melalui mekanisasi, seperti alat panen bermotor dan sistem pengangkutan TBS otomatis. Targetkan tingkat mekanisasi hingga 30% pada 2028. </p>
             </div>
           </div>
         </div>
@@ -748,39 +765,67 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           <h3 class="sec-title" style="font-size:16px;margin-bottom:16px">For Policy Makers</h3>
           <div style="display:flex;flex-direction:column;gap:12px">
             <div class="card" style="padding:16px;border-left:4px solid #3b82f6">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">🌍 EUDR compliance roadmap</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">The EU Deforestation Regulation (effective 2025) requires full traceability to plantation level. Malaysia must accelerate the Malaysian Sustainable Palm Oil (MSPO) certification rollout — currently at 68% — to maintain EU market access worth ~€1.2B annually.</p>
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px"><i class="fas fa-globe" style="color:#3b82f6"></i> Roadmap Kepatuhan EUDR </div> <p style="font-size:13px;color:var(--text-secondary);line-height:1.6"> Regulasi Deforestasi Uni Eropa (EUDR) mewajibkan ketertelusuran hingga tingkat kebun. Percepatan sertifikasi keberlanjutan menjadi penting untuk menjaga akses pasar ekspor dan meningkatkan daya saing produk sawit. </p>
             </div>
-            <div class="card" style="padding:16px;border-left:4px solid #3b82f6">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">📊 Production forecasting system</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">Embed ML-based production forecasts like this platform into MPOB's (Malaysian Palm Oil Board) monthly market outlook, improving export quota planning accuracy and reducing market speculation that creates price volatility.</p>
-            </div>
+            <div class="card" style="padding:16px;border-left:4px solid #f6d43b">
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px"><i class="fas fa-chart-line" style="color:#f6d43b"></i> Sistem Peramalan Produksi </div> <p style="font-size:13px;color:var(--text-secondary);line-height:1.6"> Integrasikan model prediksi berbasis machine learning (ML) ke dalam sistem pemantauan produksi nasional untuk meningkatkan akurasi perencanaan ekspor dan mengurangi volatilitas pasar. </p></div>
             <div class="card" style="padding:16px;border-left:4px solid #8b5cf6">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">🌱 Carbon credit integration</div>
-              <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">Link MSPO certification with Malaysia's voluntary carbon market to monetise peatland rehabilitation. Estimated 5M tonnes of additional carbon sequestration potential from restored peatlands could offset compliance costs.</p>
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px"><i class="fas fa-bars-staggered" style= "color:#8b5cf6"></i> Integrasi Carbon Credit </div> <p style="font-size:13px;color:var(--text-secondary);line-height:1.6"> Hubungkan program sertifikasi keberlanjutan dengan pasar carbon credit untuk mendukung rehabilitasi lahan gambut dan menciptakan sumber pendapatan tambahan bagi sektor perkebunan. </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="card" style="margin-top:20px">
-        <div class="card-title">For NGOs & Sustainability Organisations</div>
-        <div class="card-desc">Leverage production intelligence for advocacy and monitoring</div>
-        <div class="grid-3" style="margin-top:0">
-          <div style="padding:16px;background:var(--green-50);border-radius:var(--radius)">
-            <div style="font-size:20px;margin-bottom:8px">🗺️</div>
-            <div style="font-size:13px;font-weight:600;margin-bottom:4px">Deforestation monitoring</div>
-            <p style="font-size:12px;color:var(--text-secondary)">Cross-reference matured area expansion data with satellite deforestation alerts to identify non-compliant concessions before certification renewal.</p>
-          </div>
-          <div style="padding:16px;background:var(--amber-50);border-radius:var(--radius)">
-            <div style="font-size:20px;margin-bottom:8px">📉</div>
-            <div style="font-size:13px;font-weight:600;margin-bottom:4px">Smallholder yield gap analysis</div>
-            <p style="font-size:12px;color:var(--text-secondary)">National yield averages mask a 30–40% smallholder yield gap. Target extension services and fertilizer subsidies at the bottom quartile to improve both livelihoods and production efficiency.</p>
-          </div>
-          <div style="padding:16px;background:#ede9fe;border-radius:var(--radius)">
-            <div style="font-size:20px;margin-bottom:8px">🤝</div>
-            <div style="font-size:13px;font-weight:600;margin-bottom:4px">Supply chain transparency</div>
-            <p style="font-size:12px;color:var(--text-secondary)">Use production prediction models to flag anomalies between reported and expected production — a potential indicator of undisclosed land clearing or data misreporting.</p>
+<div class="card" style="margin-top:20px">
+  <div class="card-title">For NGOs & Sustainability Organisations</div>
+  <div class="card-desc">
+    Manfaatkan informasi intelijen produksi untuk advokasi dan pemantauan
+  </div>
+
+  <div class="drivers-grid" style="margin-top:0">
+
+    <!-- Deforestasi -->
+    <div style="padding:16px;background:var(--green-50);border-radius:var(--radius)">
+      <div style="font-size:20px;margin-bottom:8px;color:var(--green-500)">
+        <i class="fas fa-map-marked-alt"></i>
+      </div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px">
+        Pemantauan Deforestasi
+      </div>
+      <p style="font-size:12px;color:var(--text-secondary)">
+        Padukan data perluasan area tanam dengan peringatan deforestasi berbasis satelit
+        untuk mengidentifikasi potensi pelanggaran sebelum proses sertifikasi berlangsung.
+      </p>
+    </div>
+
+    <!-- Produktivitas Pekebun -->
+    <div style="padding:16px;background:var(--amber-50);border-radius:var(--radius)">
+      <div style="font-size:20px;margin-bottom:8px;color:var(--amber-500)">
+        <i class="fas fa-chart-area"></i>
+      </div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px">
+        Analisis Kesenjangan Produktivitas Pekebun
+      </div>
+      <p style="font-size:12px;color:var(--text-secondary)">
+        Rata-rata nasional sering kali menutupi kesenjangan produktivitas pekebun rakyat.
+        Program pendampingan dan bantuan input dapat difokuskan pada kelompok dengan
+        produktivitas terendah.
+      </p>
+    </div>
+
+    <!-- Transparansi Rantai Pasok -->
+    <div style="padding:16px;background:#ede9fe;border-radius:var(--radius)">
+      <div style="font-size:20px;margin-bottom:8px;color:#c9bce9">
+        <i class="fas fa-handshake" style="color:#9073da"></i>
+      </div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px">
+        Transparansi Rantai Pasok
+      </div>
+      <p style="font-size:12px;color:var(--text-secondary)">
+        Gunakan model prediksi produksi untuk menandai anomali antara produksi yang
+        dilaporkan dan yang diharapkan indikator potensial dari pembukaan lahan yang
+        tidak diungkapkan atau pelaporan tidak akurat.
+      </p>
           </div>
         </div>
       </div>
@@ -789,28 +834,43 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <!-- AI ANALYSIS TAB -->
     <div id="tab-ai" class="tab-content" style="display:none">
       <div class="card">
-        <div class="card-title">AI-powered production analysis</div>
-        <div class="card-desc">Ask the AI analyst about trends, predictions, or strategic questions about Malaysia's palm oil industry</div>
+        <div class="card-title">Nyawit AI-powered production analysis</div>
+        <div class="card-desc">Tanyakan kepada NyawitAI mengenai tren, prediksi, maupun pertanyaan strategis terkait industri kelapa sawit Malaysia</div>
 
         <div id="ai-messages" style="min-height:200px;max-height:400px;overflow-y:auto;padding:16px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px">
           <div style="display:flex;gap:10px;margin-bottom:16px">
-            <div style="width:32px;height:32px;background:var(--green-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🌴</div>
+            <div style="width:32px;height:32px;background:var(--green-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🌱</div>
             <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;max-width:85%;font-size:13px;color:var(--text-secondary);line-height:1.6">
-              Hello! I'm the Nyawit analyst. I can help you interpret production trends, explain model results, analyze risks, and generate strategic recommendations for Malaysia's palm oil sector. What would you like to explore?
+              Hello! I'm Nyawit Analyst. Saya dapat membantu Anda memahami tren produksi, menjelaskan hasil model prediksi, menganalisis risiko, serta memberikan rekomendasi strategis untuk sektor kelapa sawit Malaysia. Apa yang ingin Anda ketahui?
             </div>
           </div>
         </div>
 
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-          <button class="btn-outline" style="font-size:12px;padding:6px 12px" onclick="askPreset('What are the main risks to Malaysia CPO production in 2025-2030?')">2025–2030 risks</button>
-          <button class="btn-outline" style="font-size:12px;padding:6px 12px" onclick="askPreset('How does Malaysia compare to Indonesia in palm oil production?')">Malaysia vs Indonesia</button>
-          <button class="btn-outline" style="font-size:12px;padding:6px 12px" onclick="askPreset('What is the impact of EUDR on Malaysian palm oil exports?')">EUDR impact</button>
-          <button class="btn-outline" style="font-size:12px;padding:6px 12px" onclick="askPreset('How can yield improvement increase production without expanding land?')">Yield intensification</button>
-        </div>
+  <button class="btn-outline" style="font-size:12px;padding:6px 12px"
+    onclick="askPreset('Apa saja risiko utama terhadap produksi CPO Malaysia pada periode 2025–2030?')">
+    Risiko 2025–2030
+  </button>
+
+  <button class="btn-outline" style="font-size:12px;padding:6px 12px"
+    onclick="askPreset('Bagaimana perbandingan produksi kelapa sawit Malaysia dengan Indonesia?')">
+    Malaysia vs Indonesia
+  </button>
+
+  <button class="btn-outline" style="font-size:12px;padding:6px 12px"
+    onclick="askPreset('Apa dampak EUDR terhadap ekspor kelapa sawit Malaysia?')">
+    Dampak EUDR
+  </button>
+
+  <button class="btn-outline" style="font-size:12px;padding:6px 12px"
+    onclick="askPreset('Bagaimana peningkatan produktivitas dapat meningkatkan produksi tanpa memperluas lahan?')">
+    Intensifikasi Produktivitas
+  </button>
+</div>
 
         <div style="display:flex;gap:8px">
-          <input type="text" id="ai-input" placeholder="Ask about palm oil production, policy, trends, sustainability..." style="flex:1" onkeydown="if(event.key==='Enter')sendAiMessage()">
-          <button class="btn-primary" onclick="sendAiMessage()" id="ai-send-btn" style="white-space:nowrap">Send →</button>
+          <input type="text" id="ai-input" placeholder="Tanyakan tentang produksi sawit, kebijakan, tren industri, atau keberlanjutan..." style="flex:1" onkeydown="if(event.key==='Enter')sendAiMessage()">
+          <button class="btn-primary" onclick="sendAiMessage()" id="ai-send-btn" style="white-space:nowrap">Kirim</button>
         </div>
       </div>
     </div>
@@ -823,9 +883,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <div id="page-dashboard" class="page">
   <div class="page-header">
     <div class="page-header-inner">
-      <div class="page-tag">Tableau Public</div>
-      <h2>Interactive Dashboard</h2>
-      <p>Full supply-chain analytics — production, exports, consumption, and global comparisons</p>
+      <div class="page-tag">Tableau Data Analyst</div>
+      <h2>Dashboard Interaktif</h2>
+      <p>Analisis rantai pasok secara menyeluruh mencakup produksi, ekspor, konsumsi, serta perbandingan global.</p>
     </div>
   </div>
   <div class="section">
@@ -843,81 +903,143 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         loading="lazy">
       </iframe>
     </div>
-</div>
+</div></div>
 
 <!-- ═══════════════════════════════════════
-     ABOUT PAGE
+     HALAMAN TENTANG
 ═══════════════════════════════════════ -->
 <div id="page-about" class="page">
   <div class="page-header">
     <div class="page-header-inner">
-      <div class="page-tag">Project</div>
-      <h2>About this platform</h2>
-      <p>Palm Oil Intelligence Platform — a data science project for CPO production forecasting</p>
+      <div class="page-tag">Proyek</div>
+      <h2>Tentang Platform Ini</h2>
+      <p>Palm Oil Intelligence Platform adalah proyek data science untuk prediksi produksi Minyak Sawit (CPO)</p>
     </div>
   </div>
+
   <div class="section">
     <div class="about-grid">
+
+      <!-- KOLOM KIRI -->
       <div>
+
         <div class="card">
-          <div class="card-title">Business context</div>
+          <div class="card-title">Business Understanding</div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-top:8px">
-            <p style="margin-bottom:12px">The palm oil industry needs reliable production estimates to support planning, export strategy, and sustainability policy. Malaysia, the world's second-largest producer, contributes ~25–30% of global CPO supply.</p>
-            <p style="margin-bottom:12px">Fluctuations in production are driven by: matured plantation area, land productivity (yield), domestic consumption demand, and export market dynamics.</p>
-            <p>This platform provides a machine learning-based prediction system and intelligence layer for producers, traders, NGOs, and policy makers.</p>
+            <p style="margin-bottom:12px">
+              Industri kelapa sawit membutuhkan estimasi produksi yang akurat untuk mendukung perencanaan,
+              strategi ekspor, serta kebijakan keberlanjutan. Malaysia, sebagai produsen minyak sawit terbesar
+              kedua di dunia, menyumbang sekitar 25–30% dari total pasokan CPO global.
+            </p>
+
+            <p style="margin-bottom:12px">
+              Fluktuasi produksi dipengaruhi oleh luas area perkebunan menghasilkan, produktivitas hasil (yield),
+              permintaan konsumsi domestik, serta dinamika pasar ekspor.
+            </p>
+
+            <p>
+              Platform ini menyediakan sistem prediksi berbasis machine learning yang dipadukan dengan
+              analisis data untuk mendukung produsen, pedagang, LSM, peneliti, dan pembuat kebijakan
+              dalam pengambilan keputusan berbasis data.
+            </p>
           </div>
         </div>
 
         <div class="card" style="margin-top:20px">
-          <div class="card-title">Data sources</div>
+          <div class="card-title">Sumber Data</div>
           <div style="margin-top:10px">
             <table class="data-table">
-              <thead><tr><th>Dataset</th><th>Coverage</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Cakupan</th>
+                </tr>
+              </thead>
               <tbody>
                 <tr><td>CPO-Production.csv</td><td>Malaysia, 1990–2023</td></tr>
                 <tr><td>Oil-Palm-Matured-Area.csv</td><td>Malaysia, 1990–2023</td></tr>
                 <tr><td>Palm-Oil-Yield.csv</td><td>Malaysia, 1990–2023</td></tr>
                 <tr><td>Domestic-Consumption.csv</td><td>Malaysia, 1990–2023</td></tr>
                 <tr><td>CPO-and-Processed-Export.csv</td><td>Malaysia, 1990–2023</td></tr>
-                <tr><td>World-* datasets (6 files)</td><td>Global, 1990–2023</td></tr>
+                <tr><td>World datasets (6 file)</td><td>Global, 1990–2023</td></tr>
               </tbody>
             </table>
           </div>
         </div>
+
       </div>
 
+      <!-- KOLOM KANAN -->
       <div>
+
         <div class="card">
-          <div class="card-title">ML Models</div>
+          <div class="card-title">Model Machine Learning</div>
+
           <div style="margin-top:10px;display:flex;flex-direction:column;gap:12px">
+
             <div style="padding:14px;background:var(--green-50);border-radius:var(--radius)">
-              <div style="font-size:13px;font-weight:600;color:var(--green-800)">⭐ Best Model (best_model.pkl)</div>
-              <p style="font-size:12px;color:var(--green-700);margin-top:4px">The top-performing model selected by cross-validation. Typically XGBoost or Random Forest. R² ≈ 0.97.</p>
+              <div style="font-size:13px;font-weight:600;color:var(--green-800)">
+                ⭐ Model Terbaik (best_model.pkl)
+              </div>
+              <p style="font-size:12px;color:var(--green-700);margin-top:4px">
+                Model dengan performa terbaik berdasarkan cross-validation. Biasanya menggunakan XGBoost atau Random Forest.
+                Nilai R² ≈ 0.97.
+              </p>
             </div>
+
             <div style="padding:14px;background:var(--slate-50);border-radius:var(--radius)">
-              <div style="font-size:13px;font-weight:600">🌲 Random Forest (random_forest.pkl)</div>
-              <p style="font-size:12px;color:var(--text-muted);margin-top:4px">Ensemble of 100+ decision trees. Robust to outliers, provides feature importance. R² ≈ 0.96.</p>
+              <div style="font-size:13px;font-weight:600">🌲 Random Forest</div>
+              <p style="font-size:12px;color:var(--text-muted);margin-top:4px">
+                Model ensemble dari banyak pohon keputusan. Tahan terhadap outlier dan dapat memberikan
+                informasi pentingnya fitur. R² ≈ 0.96.
+              </p>
             </div>
+
             <div style="padding:14px;background:var(--slate-50);border-radius:var(--radius)">
-              <div style="font-size:13px;font-weight:600">⚡ XGBoost (xgboost.pkl)</div>
-              <p style="font-size:12px;color:var(--text-muted);margin-top:4px">Gradient boosted trees with regularisation. Best at capturing non-linear interactions. R² ≈ 0.97.</p>
+              <div style="font-size:13px;font-weight:600">⚡ XGBoost</div>
+              <p style="font-size:12px;color:var(--text-muted);margin-top:4px">
+                Model gradient boosting yang kuat untuk menangkap hubungan non-linear antar variabel.
+                R² ≈ 0.97.
+              </p>
             </div>
+
             <div style="padding:14px;background:var(--slate-50);border-radius:var(--radius)">
-              <div style="font-size:13px;font-weight:600">📈 Linear Regression (linear_regression.pkl)</div>
-              <p style="font-size:12px;color:var(--text-muted);margin-top:4px">Baseline model. Interpretable coefficients. R² ≈ 0.89. Best for explainability to non-technical stakeholders.</p>
+              <div style="font-size:13px;font-weight:600">📈 Regresi Linear</div>
+              <p style="font-size:12px;color:var(--text-muted);margin-top:4px">
+                Model dasar yang mudah diinterpretasikan untuk kebutuhan penjelasan ke pemangku kepentingan non-teknis.
+                R² ≈ 0.89.
+              </p>
             </div>
+
           </div>
         </div>
 
         <div class="card" style="margin-top:20px">
-          <div class="card-title">GitHub repository</div>
-          <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:10px 0 14px">Full source code, datasets, trained model files, and Jupyter notebooks are available on GitHub.</p>
-          <button class="btn-primary" onclick="openLink('https://github.com/oshlite/palm-oil-intelligence-platform')">View on GitHub ↗</button>
+          <div class="card-title">Author</div>
+
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin:10px 0 14px">
+            Project by <strong>Oryza Surya Hapsari</strong> <strong>@oshlite</strong>.
+            Proyek ini dibuat sebagai eksplorasi data science yang menggabungkan machine learning,
+            analisis data, dan business intelligence untuk memahami serta memprediksi dinamika
+            produksi minyak sawit.
+          </p>
+
+          <button class="btn-primary"
+                  onclick="openLink('https://github.com/oshlite/palm-oil-intelligence-platform')">
+            Repository GitHub
+          </button>
+           <button class="btn-primary"
+            onclick="openLink('https://instagram.com/oshlite')">
+            Hire Me ↗
+          </button>
         </div>
+
       </div>
+
     </div>
   </div>
 </div>
+</div> 
 
 <footer>
   <a href="https://github.com/oshlite/palm-oil-intelligence-platform" onclick="openLink(this.href);return false">Nyawit</a> · Turning Palm Oil Data into Smarter Decisions · Malaysia CPO Production Intelligence Platform · 
@@ -1230,7 +1352,7 @@ async function sendAiMessage() {
     aiHistory.push({ role: 'assistant', content: reply });
   } catch (e) {
     removeTyping();
-    appendAiMsg('assistant', 'Network error — please try again.');
+    appendAiMsg('assistant', 'Sedang dalam pengembangan, coba lagi nanti ya!');
   }
 
   btn.disabled = false;
@@ -1249,7 +1371,7 @@ function appendAiMsg(role, text) {
   div.style.cssText = `display:flex;gap:10px;margin-bottom:16px;${isUser ? 'flex-direction:row-reverse' : ''}`;
   div.innerHTML = `
     <div style="width:32px;height:32px;border-radius:50%;background:${isUser ? 'var(--slate-200)' : 'var(--green-700)'};display:flex;align-items:center;justify-content:center;font-size:${isUser ? '14px' : '14px'};flex-shrink:0">
-      ${isUser ? '👤' : '🌴'}
+      ${isUser ? '👤' : '🌱'}
     </div>
     <div style="background:${isUser ? 'var(--green-50)' : 'var(--white)'};border:1px solid ${isUser ? 'var(--green-200)' : 'var(--border)'};border-radius:var(--radius);padding:12px 14px;max-width:85%;font-size:13px;color:var(--text-secondary);line-height:1.7">
       ${text.replace(/\n/g, '<br>')}
@@ -1265,7 +1387,7 @@ function appendAiTyping() {
   div.id = 'ai-typing';
   div.style.cssText = 'display:flex;gap:10px;margin-bottom:16px';
   div.innerHTML = `
-    <div style="width:32px;height:32px;border-radius:50%;background:var(--green-700);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🌴</div>
+    <div style="width:32px;height:32px;border-radius:50%;background:var(--green-700);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🌱</div>
     <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;font-size:13px;color:var(--text-muted)">
       <span class="spinner"></span> Analysing…
     </div>
